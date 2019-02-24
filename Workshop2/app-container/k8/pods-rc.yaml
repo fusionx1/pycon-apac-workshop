@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: pycon-flask
+  name: pycon-flask-rc
+spec:
+  replicas: 1
+  selector:
+    name: pycon-flask
+  template:
+    metadata:
+      labels:
+        name: pycon-flask
+    spec:
+      containers:
+      - image: gcr.io/pantheon-csapps/pycon-flask:1
+        name: pycon-flask
+        ports:
+        - containerPort: 5000
+          name: http-server
+          
+
+
